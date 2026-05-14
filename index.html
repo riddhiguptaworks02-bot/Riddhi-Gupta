@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Riddhi Gupta — Social Media Manager</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Dancing+Script:wght@600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --maroon:   #6B1F1F;
+      --maroon-dark: #4A1212;
+      --cream:    #F5EFE6;
+      --cream-light: #FAF6F1;
+      --sand:     #E8D9C5;
+      --accent:   #C9A87C;
+      --text-dark:#2C1A1A;
+      --white:    #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream-light);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--maroon-dark);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 48px;
+    }
+    nav .nav-links { display: flex; gap: 36px; }
+    nav .nav-links a {
+      color: var(--cream); text-decoration: none;
+      font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+      font-weight: 500; transition: color .3s;
+    }
+    nav .nav-links a:hover { color: var(--accent); }
+    nav .nav-logo {
+      font-family: 'Dancing Script', cursive;
+      color: var(--white); font-size: 22px;
+    }
+    nav .nav-cta {
+      background: var(--cream); color: var(--maroon-dark);
+      border: none; padding: 8px 22px; border-radius: 20px;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      font-weight: 600; cursor: pointer; transition: background .3s;
+    }
+    nav .nav-cta:hover { background: var(--accent); color: var(--white); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: var(--maroon);
+      position: relative; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr;
+      padding-top: 64px;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 60px 60px;
+      position: relative; z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--sand); margin-bottom: 16px; font-weight: 400;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(56px, 7vw, 96px);
+      color: var(--white); line-height: .95;
+      font-weight: 900; text-transform: uppercase;
+    }
+    .hero-title span {
+      display: block; font-family: 'Dancing Script', cursive;
+      font-size: clamp(28px, 3.5vw, 48px);
+      color: var(--sand); text-transform: none;
+      font-weight: 600; margin-top: 8px;
+    }
+    .hero-badges {
+      display: flex; gap: 24px; margin-top: 40px;
+    }
+    .hero-badge {
+      border-top: 1px solid rgba(255,255,255,.3);
+      padding-top: 12px;
+    }
+    .hero-badge p {
+      font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--sand); font-weight: 500;
+    }
+    .hero-tagline {
+      margin-top: 48px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic; font-size: 16px;
+      color: rgba(255,255,255,.75); line-height: 1.6;
+      max-width: 380px;
+    }
+    .hero-cta {
+      margin-top: 36px;
+      background: var(--cream); color: var(--maroon-dark);
+      border: none; padding: 14px 36px; border-radius: 30px;
+      font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+      font-weight: 600; cursor: pointer; transition: all .3s;
+      display: inline-block; text-decoration: none;
+    }
+    .hero-cta:hover { background: var(--accent); color: var(--white); transform: translateY(-2px); }
+
+    .hero-right {
+      display: flex; align-items: flex-end; justify-content: center;
+      position: relative; padding-bottom: 0;
+    }
+    .hero-photo-wrap {
+      width: 340px; height: 420px;
+      border-radius: 180px 180px 0 0;
+      background: var(--sand);
+      overflow: hidden; position: relative;
+      box-shadow: -20px 20px 60px rgba(0,0,0,.35);
+    }
+    .hero-photo-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .hero-photo-wrap .photo-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(160deg, #d4b8a0 0%, #a07850 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Dancing Script', cursive;
+      font-size: 22px; color: rgba(255,255,255,.6);
+    }
+    /* decorative dots */
+    .hero-dots {
+      position: absolute; bottom: 60px; left: 40px;
+      display: grid; grid-template-columns: repeat(5,10px); gap: 8px;
+    }
+    .hero-dots span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,.25);
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 100px 60px; }
+    .section-label {
+      font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+      color: var(--accent); font-weight: 600; margin-bottom: 12px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-label::before {
+      content: ''; display: block; width: 40px; height: 1px;
+      background: var(--accent);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.05; font-weight: 900;
+    }
+    .section-title em {
+      font-style: italic; color: var(--maroon);
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--cream-light);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center;
+    }
+    .about-visual { position: relative; }
+    .about-photo-ring {
+      width: 340px; height: 340px; border-radius: 50%;
+      border: 8px solid var(--maroon);
+      overflow: hidden; margin: 0 auto;
+      box-shadow: 20px 20px 0 var(--sand);
+    }
+    .about-photo-ring img { width: 100%; height: 100%; object-fit: cover; }
+    .about-photo-ring .photo-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, var(--sand), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Dancing Script', cursive;
+      font-size: 20px; color: rgba(255,255,255,.7);
+    }
+    .about-decor-label {
+      position: absolute; bottom: -20px; right: 10px;
+      background: var(--maroon); color: var(--cream);
+      font-family: 'Dancing Script', cursive;
+      font-size: 24px; padding: 12px 24px; border-radius: 30px;
+      box-shadow: 4px 4px 20px rgba(0,0,0,.2);
+    }
+    .about-content { }
+    .about-greeting {
+      font-family: 'Dancing Script', cursive;
+      font-size: 32px; color: var(--maroon); margin: 20px 0 16px;
+    }
+    .about-bio {
+      font-size: 15px; line-height: 1.85; color: #4a3a3a;
+      margin-bottom: 28px;
+    }
+    .about-stats {
+      display: flex; gap: 32px; margin-top: 32px;
+    }
+    .stat {
+      text-align: center;
+      background: var(--maroon); color: var(--cream);
+      padding: 20px 28px; border-radius: 16px;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px; font-weight: 900; line-height: 1;
+    }
+    .stat-label {
+      font-size: 10px; letter-spacing: 2px;
+      text-transform: uppercase; margin-top: 6px; opacity: .8;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--maroon-dark);
+      text-align: center;
+    }
+    #services .section-label { justify-content: center; }
+    #services .section-label::before { display: none; }
+    #services .section-title { color: var(--white); }
+    #services .section-title em { color: var(--sand); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      margin-top: 60px;
+    }
+    .service-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px; padding: 40px 32px;
+      transition: all .35s; text-align: left;
+    }
+    .service-card:hover {
+      background: rgba(255,255,255,.12);
+      transform: translateY(-6px);
+      border-color: var(--accent);
+    }
+    .service-icon {
+      font-size: 36px; margin-bottom: 20px; display: block;
+    }
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; color: var(--white);
+      font-weight: 700; margin-bottom: 12px;
+    }
+    .service-desc {
+      font-size: 14px; color: rgba(255,255,255,.6);
+      line-height: 1.7;
+    }
+    .service-num {
+      margin-top: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 48px; font-weight: 900;
+      color: rgba(255,255,255,.07);
+      line-height: 1;
+    }
+
+    /* ── WORK ── */
+    #work { background: var(--cream); }
+    .work-intro {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 56px;
+    }
+    .work-intro p {
+      max-width: 380px; font-size: 15px; color: #5a4040; line-height: 1.7;
+    }
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .work-card {
+      border-radius: 20px; overflow: hidden;
+      position: relative; aspect-ratio: 4/5;
+      background: var(--sand);
+      transition: transform .35s;
+    }
+    .work-card:hover { transform: scale(1.02); }
+    .work-card:nth-child(2) { margin-top: 40px; }
+    .work-card:nth-child(4) { margin-top: -40px; }
+    .work-card img { width: 100%; height: 100%; object-fit: cover; }
+    .work-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px;
+    }
+    .work-placeholder span {
+      font-size: 40px;
+    }
+    .work-placeholder p {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(0,0,0,.4);
+    }
+    /* Different tints per card */
+    .work-card:nth-child(1) .work-placeholder { background: linear-gradient(135deg,#e8cfc0,#c9a57c); }
+    .work-card:nth-child(2) .work-placeholder { background: linear-gradient(135deg,#d4c5b5,#b89a7a); }
+    .work-card:nth-child(3) .work-placeholder { background: linear-gradient(135deg,#c9bbb0,#a8876a); }
+    .work-card:nth-child(4) .work-placeholder { background: linear-gradient(135deg,#ddd0c4,#c4a080); }
+    .work-card:nth-child(5) .work-placeholder { background: linear-gradient(135deg,#e2d4c8,#b89478); }
+    .work-card:nth-child(6) .work-placeholder { background: linear-gradient(135deg,#cfc0b5,#a07560); }
+    .work-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(74,18,18,.85) 0%, transparent 55%);
+      opacity: 0; transition: opacity .35s;
+      display: flex; align-items: flex-end; padding: 24px;
+    }
+    .work-card:hover .work-overlay { opacity: 1; }
+    .work-overlay-text {
+      color: var(--cream); font-family: 'Playfair Display', serif;
+      font-size: 18px; font-style: italic;
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials {
+      background: var(--maroon);
+      text-align: center;
+    }
+    #testimonials .section-title { color: var(--white); }
+    #testimonials .section-title em { color: var(--sand); }
+    .testimonials-row {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 24px; margin-top: 60px;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,.08);
+      border-radius: 20px; padding: 36px 28px; text-align: left;
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .stars { color: var(--accent); font-size: 18px; margin-bottom: 16px; }
+    .testimonial-text {
+      font-size: 14px; color: rgba(255,255,255,.8);
+      line-height: 1.75; font-style: italic; margin-bottom: 20px;
+    }
+    .testimonial-author {
+      font-weight: 600; color: var(--cream); font-size: 14px;
+    }
+    .testimonial-role {
+      font-size: 12px; color: rgba(255,255,255,.45); margin-top: 2px;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--cream-light);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center;
+    }
+    .contact-left .section-title { margin-bottom: 20px; }
+    .contact-left p {
+      font-size: 15px; color: #5a4040; line-height: 1.75; margin-bottom: 40px;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 20px;
+      background: var(--white); padding: 20px 24px;
+      border-radius: 16px; border-left: 4px solid var(--maroon);
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+    }
+    .contact-icon {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--maroon);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .contact-item-label {
+      font-size: 10px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent);
+      font-weight: 600; margin-bottom: 4px;
+    }
+    .contact-item-value {
+      font-size: 15px; font-weight: 500; color: var(--text-dark);
+    }
+
+    .contact-form {
+      background: var(--white);
+      border-radius: 28px; padding: 48px 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.08);
+    }
+    .contact-form h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 30px; color: var(--maroon); margin-bottom: 28px;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-size: 11px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent);
+      font-weight: 600; margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%; padding: 14px 18px;
+      border: 1.5px solid var(--sand);
+      border-radius: 12px; font-family: 'Jost', sans-serif;
+      font-size: 14px; color: var(--text-dark);
+      background: var(--cream-light);
+      transition: border-color .3s; outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--maroon); }
+    .form-group textarea { resize: none; height: 110px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .submit-btn {
+      width: 100%; padding: 16px;
+      background: var(--maroon); color: var(--cream);
+      border: none; border-radius: 30px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+      font-weight: 600; cursor: pointer; transition: all .3s;
+      margin-top: 8px;
+    }
+    .submit-btn:hover {
+      background: var(--maroon-dark); transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--maroon-dark);
+      text-align: center; padding: 40px 60px;
+    }
+    .footer-logo {
+      font-family: 'Dancing Script', cursive;
+      font-size: 36px; color: var(--white); margin-bottom: 12px;
+    }
+    footer p {
+      font-size: 12px; color: rgba(255,255,255,.4);
+      letter-spacing: 1px;
+    }
+    .footer-social {
+      display: flex; gap: 16px; justify-content: center; margin: 20px 0;
+    }
+    .footer-social a {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; text-decoration: none;
+      transition: all .3s; color: var(--cream);
+    }
+    .footer-social a:hover {
+      background: var(--maroon); border-color: var(--maroon);
+    }
+
+    /* ── DIVIDER WAVE ── */
+    .wave-divider { overflow: hidden; line-height: 0; }
+    .wave-divider svg { display: block; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 14px 24px; }
+      nav .nav-links { gap: 18px; }
+      section { padding: 80px 28px; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      #about { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .work-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-row { grid-template-columns: 1fr; }
+      #contact { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">My Work</a>
+      <a href="#testimonials">Stats</a>
+    </div>
+    <div class="nav-logo">Riddhi.</div>
+    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get In Touch</button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">✦ Welcome to my world</p>
+      <h1 class="hero-title">
+        SOCIAL<br>MEDIA
+        <span>by Riddhi</span>
+      </h1>
+      <div class="hero-badges">
+        <div class="hero-badge"><p>Social Media Manager</p></div>
+        <div class="hero-badge"><p>Content Strategist</p></div>
+        <div class="hero-badge"><p>Brand Builder</p></div>
+      </div>
+      <p class="hero-tagline">
+        Crafting memorable brand narratives &amp; strategies that connect, engage and grow your brand.
+      </p>
+      <a href="#contact" class="hero-cta">Let's Work Together</a>
+    </div>
+    <div class="hero-right">
+      <div class="hero-photo-wrap">
+        <div class="photo-placeholder">Your Photo Here</div>
+      </div>
+      <div class="hero-dots">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave-divider" style="background:var(--maroon);">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#F5EFE6" d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z"/>
+    </svg>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-visual reveal">
+      <div class="about-photo-ring">
+        <div class="photo-placeholder">Your Photo</div>
+      </div>
+      <div class="about-decor-label">Hi, I'm Riddhi!</div>
+    </div>
+    <div class="about-content reveal">
+      <p class="section-label">A little about me</p>
+      <h2 class="section-title">The Brain Behind <em>The Feed</em></h2>
+      <p class="about-greeting">Hi, I'm Riddhi Gupta!</p>
+      <p class="about-bio">
+        A multifaceted Social Media Manager passionate about helping brands grow their online presence. With a keen eye for content strategy, community building, and data-driven results, I create social media strategies that resonate with the target audience. From crafting compelling content to driving meaningful interactions, I focus on translating your brand's vision into an engaging digital presence that converts. Let's take your social media to the next level and turn followers into fans!
+      </p>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Brands Scaled</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave-divider" style="background:var(--cream-light);">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#4A1212" d="M0,20 C480,60 960,0 1440,30 L1440,60 L0,60 Z"/>
+    </svg>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <p class="section-label" style="justify-content:center;color:var(--sand);">What I offer</p>
+    <h2 class="section-title" style="color:var(--white);text-align:center;">
+      Things I Can Do <em style="color:var(--sand);">For Your Brand</em>
+    </h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-icon">🧠</span>
+        <div class="service-name">Brand Content Strategy & Creative Direction</div>
+        <div class="service-desc">Building a content roadmap that aligns with your brand goals — from content pillars and formats to posting cadence and creative themes that set you apart.</div>
+        <div class="service-num">01</div>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">📱</span>
+        <div class="service-name">Social Media Management</div>
+        <div class="service-desc">End-to-end management of your Instagram, Facebook, LinkedIn, and TikTok — from strategy to scheduling to community management.</div>
+        <div class="service-num">02</div>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">✍️</span>
+        <div class="service-name">Copywriting</div>
+        <div class="service-desc">Compelling captions, hooks, bio rewrites, and long-form content that sounds like you — only sharper, more persuasive, and built to convert.</div>
+        <div class="service-num">03</div>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">💡</span>
+        <div class="service-name">Brand Identity & Voice</div>
+        <div class="service-desc">Developing a consistent, recognizable brand aesthetic and tone of voice that stands out and resonates with your ideal audience.</div>
+        <div class="service-num">04</div>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">📊</span>
+        <div class="service-name">Analytics & Reporting</div>
+        <div class="service-desc">Monthly performance reports with actionable insights so you always know what's working and what can be improved.</div>
+        <div class="service-num">05</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave-divider" style="background:var(--maroon-dark);">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#EDE5D8" d="M0,40 C360,0 1080,60 1440,20 L1440,60 L0,60 Z"/>
+    </svg>
+  </div>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="work-intro">
+      <div>
+        <p class="section-label">Selected Projects</p>
+        <h2 class="section-title">My <em>Work</em></h2>
+      </div>
+      <p>A glimpse into some of the brands I've helped grow — from content creation to full social media takeovers.</p>
+    </div>
+    <div class="work-grid">
+      <div class="work-card reveal">
+        <div class="work-placeholder">
+          <span>🧘‍♀️</span><p>Nutritionist Reels</p>
+        </div>
+        <div class="work-overlay"><div class="work-overlay-text">Nutritionist — Instagram Reels</div></div>
+      </div>
+      <div class="work-card reveal">
+        <div class="work-placeholder">
+          <span>🧠</span><p>Psychologist Reels</p>
+        </div>
+        <div class="work-overlay"><div class="work-overlay-text">Psychologist — Instagram Reels</div></div>
+      </div>
+      <div class="work-card reveal">
+        <div class="work-placeholder">
+          <span>🎬</span><p>YouTube Shorts</p>
+        </div>
+        <div class="work-overlay"><div class="work-overlay-text">Psychologist — YouTube Shorts</div></div>
+      </div>
+      <div class="work-card reveal">
+        <div class="work-placeholder">
+          <span>🎓</span><p>College Society Reels</p>
+        </div>
+        <div class="work-overlay"><div class="work-overlay-text">College Society — Instagram Reels</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT GROWTH INSIGHTS -->
+  <section id="testimonials" style="background:var(--maroon-dark);">
+    <p class="section-label" style="justify-content:center;color:var(--sand);">Real Results</p>
+    <h2 class="section-title" style="color:var(--white);text-align:center;margin-bottom:16px;">
+      Client <em style="color:var(--sand);">Growth Insights</em>
+    </h2>
+    <p style="text-align:center;color:rgba(255,255,255,.6);font-size:15px;max-width:520px;margin:0 auto 60px;line-height:1.7;">
+      A look at the real numbers behind the brands I've helped grow. Each screenshot tells a story of strategy, consistency, and results.
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:32px;max-width:900px;margin:0 auto;">
+
+      <!-- Dr. Mayurika Das Biswas -->
+      <div class="reveal" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:24px;overflow:hidden;">
+        <div style="background:rgba(255,255,255,.04);padding:20px 24px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:14px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:20px;">🧠</div>
+          <div>
+            <div style="color:var(--white);font-weight:600;font-size:15px;">Dr. Mayurika Das Biswas</div>
+            <div style="color:rgba(255,255,255,.45);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Psychologist</div>
+          </div>
+        </div>
+        <div style="width:100%;aspect-ratio:4/5;background:linear-gradient(160deg,#2a1a3a,#4a2060);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;text-align:center;">
+          <span style="font-size:48px;">📊</span>
+          <p style="color:rgba(255,255,255,.5);font-size:12px;letter-spacing:2px;text-transform:uppercase;">Upload Growth Screenshot</p>
+          <p style="color:rgba(255,255,255,.3);font-size:11px;">Replace with:<br><code style="background:rgba(255,255,255,.1);padding:2px 6px;border-radius:4px;">&lt;img src="mayurika-insights.png"&gt;</code></p>
+        </div>
+        <div style="padding:20px 24px;display:flex;gap:16px;">
+          <div style="flex:1;text-align:center;background:rgba(255,255,255,.05);border-radius:12px;padding:12px 8px;">
+            <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--accent);">6K</div>
+            <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:4px;">Followers</div>
+          </div>
+          <div style="flex:1;text-align:center;background:rgba(255,255,255,.05);border-radius:12px;padding:12px 8px;">
+            <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--accent);">Instagram</div>
+            <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:4px;">Platform</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Anushka Modi -->
+      <div class="reveal" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:24px;overflow:hidden;">
+        <div style="background:rgba(255,255,255,.04);padding:20px 24px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:14px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:20px;">💬</div>
+          <div>
+            <div style="color:var(--white);font-weight:600;font-size:15px;">Anushka Modi</div>
+            <div style="color:rgba(255,255,255,.45);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Clinical Psychologist</div>
+          </div>
+        </div>
+        <div style="width:100%;aspect-ratio:4/5;background:linear-gradient(160deg,#1a2a3a,#205060);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;text-align:center;">
+          <span style="font-size:48px;">📈</span>
+          <p style="color:rgba(255,255,255,.5);font-size:12px;letter-spacing:2px;text-transform:uppercase;">Upload Growth Screenshot</p>
+          <p style="color:rgba(255,255,255,.3);font-size:11px;">Replace with:<br><code style="background:rgba(255,255,255,.1);padding:2px 6px;border-radius:4px;">&lt;img src="anushka-insights.png"&gt;</code></p>
+        </div>
+        <div style="padding:20px 24px;display:flex;gap:16px;">
+          <div style="flex:1;text-align:center;background:rgba(255,255,255,.05);border-radius:12px;padding:12px 8px;">
+            <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--accent);">2K</div>
+            <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:4px;">Followers</div>
+          </div>
+          <div style="flex:1;text-align:center;background:rgba(255,255,255,.05);border-radius:12px;padding:12px 8px;">
+            <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--accent);">Instagram</div>
+            <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:4px;">Platform</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Harshita Dilawri -->
+      <div class="reveal" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:24px;overflow:hidden;">
+        <div style="background:rgba(255,255,255,.04);padding:20px 24px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:14px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:20px;">🥗</div>
+          <div>
+            <div style="color:var(--white);font-weight:600;font-size:15px;">Harshita Dilawri</div>
+            <div style="color:rgba(255,255,255,.45);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Nutrition Coach</div>
+          </div>
+        </div>
+        <div style="width:100%;aspect-ratio:4/5;background:linear-gradient(160deg,#1a3a2a,#206040);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;text-align:center;">
+          <span style="font-size:48px;">📊</span>
+          <p style="color:rgba(255,255,255,.5);font-size:12px;letter-spacing:2px;text-transform:uppercase;">Upload Growth Screenshot</p>
+          <p style="color:rgba(255,255,255,.3);font-size:11px;">Replace with:<br><code style="background:rgba(255,255,255,.1);padding:2px 6px;border-radius:4px;">&lt;img src="harshita-insights.png"&gt;</code></p>
+        </div>
+        <div style="padding:20px 24px;display:flex;gap:16px;">
+          <div style="flex:1;text-align:center;background:rgba(255,255,255,.05);border-radius:12px;padding:12px 8px;">
+            <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--accent);">11K</div>
+            <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:4px;">Followers</div>
+          </div>
+          <div style="flex:1;text-align:center;background:rgba(255,255,255,.05);border-radius:12px;padding:12px 8px;">
+            <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--accent);">Instagram</div>
+            <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:4px;">Platform</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aditi Grover -->
+      <div class="reveal" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:24px;overflow:hidden;">
+        <div style="background:rgba(255,255,255,.04);padding:20px 24px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:14px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:20px;">🌿</div>
+          <div>
+            <div style="color:var(--white);font-weight:600;font-size:15px;">Aditi Grover</div>
+            <div style="color:rgba(255,255,255,.45);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Nutrition Coach</div>
+          </div>
+        </div>
+        <div style="width:100%;aspect-ratio:4/5;background:linear-gradient(160deg,#3a2a1a,#604020);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;text-align:center;">
+          <span style="font-size:48px;">📈</span>
+          <p style="color:rgba(255,255,255,.5);font-size:12px;letter-spacing:2px;text-transform:uppercase;">Upload Growth Screenshot</p>
+          <p style="color:rgba(255,255,255,.3);font-size:11px;">Replace with:<br><code style="background:rgba(255,255,255,.1);padding:2px 6px;border-radius:4px;">&lt;img src="aditi-insights.png"&gt;</code></p>
+        </div>
+        <div style="padding:20px 24px;display:flex;gap:16px;">
+          <div style="flex:1;text-align:center;background:rgba(255,255,255,.05);border-radius:12px;padding:12px 8px;">
+            <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--accent);">23K</div>
+            <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:4px;">Followers</div>
+          </div>
+          <div style="flex:1;text-align:center;background:rgba(255,255,255,.05);border-radius:12px;padding:12px 8px;">
+            <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--accent);">Instagram</div>
+            <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:4px;">Platform</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- How to add screenshots note -->
+    <div style="margin-top:48px;text-align:center;background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.2);border-radius:16px;padding:24px 40px;max-width:600px;margin-left:auto;margin-right:auto;">
+      <p style="color:rgba(255,255,255,.5);font-size:13px;line-height:1.8;">
+        💡 <strong style="color:var(--sand);">To add your real screenshots:</strong> In each client card, replace the coloured placeholder div with<br>
+        <code style="background:rgba(255,255,255,.1);padding:2px 8px;border-radius:6px;font-size:12px;">&lt;img src="your-screenshot.png" style="width:100%;height:100%;object-fit:cover;"&gt;</code>
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-left reveal">
+      <p class="section-label">Get in touch</p>
+      <h2 class="section-title">Let's Build Something <em>Amazing</em></h2>
+      <p>Ready to elevate your brand's social media presence? I'd love to hear about your goals and how we can work together.</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <div class="contact-item-label">Email Me</div>
+            <div class="contact-item-value">riddhiguptaworks02@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-item-label">Call / WhatsApp</div>
+            <div class="contact-item-value">+91 9711548663</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-item-label">Location</div>
+            <div class="contact-item-value">New Delhi, India</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <h3>Send me a message ✦</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Jane Doe"/>
+        </div>
+        <div class="form-group">
+          <label>Your Email</label>
+          <input type="email" placeholder="jane@brand.com"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+91 00000 00000"/>
+      </div>
+      <div class="form-group">
+        <label>Your Message</label>
+        <textarea placeholder="Tell me about your brand and goals…"></textarea>
+      </div>
+      <button class="submit-btn">Send Message ✦</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Riddhi Gupta</div>
+    <div class="footer-social">
+      <a href="#" title="Instagram">📸</a>
+      <a href="#" title="LinkedIn">💼</a>
+      <a href="#" title="Pinterest">📌</a>
+    </div>
+    <p>© 2026 Riddhi Gupta · Social Media Manager · All rights reserved</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
